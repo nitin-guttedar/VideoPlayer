@@ -1,50 +1,58 @@
-# Welcome to your Expo app 👋
+# WebView & Push Notifications Demo 🔔
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern mobile application built with **React Native** and **Expo** that showcases robust integration of advanced mobile features: **deep-linking push notifications**, an **embedded WebView**, and a **custom HLS video player**.
 
-## Get started
+---
 
-1. Install dependencies
+## ✨ Key Features
 
-   ```bash
-   npm install
-   ```
+- **Push Notifications:**
+  - Schedules local push notifications using `expo-notifications`.
+  - Notifications are also scheduled based on app events, such as when the WebView finishes loading.
+- **Embedded WebView (`react-native-webview`):**
+  - Displays live web content (e.g., Flipkart) within a dedicated card on the **Home Screen**.
+  - Includes a custom **loading overlay** and spinner that appears while content is being fetched.
+- **Custom HLS Video Player:**
+  - A dedicated screen utilizing **`expo-av`** to play HLS streams (`.m3u8` format).
+  - Features a **fully customized control overlay** (Play/Pause, Forward/Rewind 10s, Mute/Unmute, Fullscreen toggle, and time display).
+- **Modern Themed UI:** Utilizes **`expo-linear-gradient`** for engaging backgrounds and a consistent color palette defined in `src/constants/colors.js`.
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 📦 Project Structure & Technologies
 
-In the output, you'll find options to open the app in a
+### Core Technologies
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+| Technology                           | Purpose                                                  |
+| :----------------------------------- | :------------------------------------------------------- |
+| **React Native / Expo**              | Foundation for cross-platform development.               |
+| **`expo-notifications`**             | Manages scheduling, permissions, and deep-link handling. |
+| **`@react-navigation/native-stack`** | Handles screen navigation.                               |
+| **`react-native-webview`**           | Component for embedding live web content.                |
+| **`expo-av`**                        | Provides the `Video` component for HLS media playback.   |
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### File Breakdown
 
-## Get a fresh project
+| File                                   | Description                                                                                                                                                                   |
+| :------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `App.js`                               | Main component. Sets up the **Navigation Stack**, registers notification permissions, and initializes the **Deep Link Listener** (`addNotificationResponseReceivedListener`). |
+| `src/screens/HomeScreen.js`            | Displays the **WebView** and provides buttons to test simple and deep-linking **Notifications**.                                                                              |
+| `src/screens/VideoScreen.js`           | Contains the **Custom HLS Video Player** and its control logic using the `Video` component ref.                                                                               |
+| `src/services/scheduleNotification.js` | Reusable service function to schedule notifications with a customizable delay and `data` payload.                                                                             |
+| `src/components/ModernButton.js`       | Reusable, gradient-styled button component using `expo-linear-gradient`.                                                                                                      |
 
-When you're ready, run:
+---
+
+## 🚀 Get Started
+
+npm install
+
+npm run android
+
+### Prerequisites
+
+Ensure you have **Node.js**, **npm/yarn**, and the **Expo CLI** installed globally.
 
 ```bash
-npm run reset-project
+npm install -g expo-cli
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
